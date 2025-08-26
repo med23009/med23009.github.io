@@ -1,0 +1,193 @@
+/* Base theme (dark, terminal-like) */
+:root {
+  --bg: #0f111a;
+  --fg: #e5e9f0;
+  --muted: #a0a6b0;
+  --accent: #61afef; /* blue */
+  --green: #98c379;
+  --yellow: #e5c07b;
+  --red: #e06c75;
+  --shadow: rgba(0,0,0,0.5);
+}
+
+body.light {
+  --bg: #f7f8fa;
+  --fg: #1f2430;
+  --muted: #5b6170;
+  --accent: #0b84ff;
+  --green: #2d9d53;
+  --yellow: #c8871e;
+  --red: #c23b3b;
+  --shadow: rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* Window manager bar */
+.wm-bar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.06));
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.wm-title {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.wm-title .wm-logo {
+  height: 24px;
+  width: 24px;
+  object-fit: contain;
+  vertical-align: -5px;
+  margin-right: 10px;
+  filter: none;
+  opacity: 1;
+}
+.wm-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wm-actions a, .wm-actions button {
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.wm-actions a:hover, .wm-actions button:hover { border-color: var(--accent); }
+
+/* Right-side GitHub link */
+.wm-actions #ghLink { display: inline-flex; align-items: center; gap: 6px; }
+.wm-actions #ghLink .icon-img { height: 18px; width: 18px; object-fit: contain; }
+
+.hide-sm { display: inline; }
+@media (max-width: 520px) {
+  .hide-sm { display: none; }
+}
+
+/* Terminal container */
+.terminal {
+  max-width: 980px;
+  margin: 24px auto;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+.screen {
+  /* Fixed viewport height with scrolling */
+  height: 60vh;
+  padding: 18px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-y: auto;
+}
+
+/* Prompt */
+.prompt-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+.prompt {
+  color: var(--green);
+}
+.cmd {
+  background: transparent;
+  color: var(--fg);
+  border: none;
+  outline: none;
+  font: inherit;
+}
+.caret {
+  width: 8px;
+  height: 1.2em;
+  background: var(--fg);
+  display: inline-block;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* Content styles */
+.line { margin: 4px 0; }
+.help { color: var(--muted); }
+.hl { color: var(--accent); }
+.k { color: var(--yellow); }
+.err { color: var(--red); }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  margin: 2px 6px 2px 0;
+  color: var(--muted);
+}
+.section-title {
+  color: var(--accent);
+  font-weight: 600;
+}
+.list {
+  margin: 8px 0 12px 0;
+  padding-left: 16px;
+}
+.logo-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.logo-row img { height: 26px; filter: grayscale(1) contrast(1.2); opacity: 0.9; }
+
+/* Experience item */
+.exp-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.12);
+}
+.exp-item:last-child { border-bottom: none; }
+.exp-item img { height: 32px; width: 32px; object-fit: contain; filter: grayscale(1) contrast(1.2); opacity: 0.95; }
+.exp-title { font-weight: 600; }
+.exp-dates { color: var(--muted); }
+.exp-bullets { margin: 6px 0 4px 16px; }
+
+/* Avatar intro */
+.avatar {
+  display: inline-block;
+  width: 84px;
+  height: 84px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .screen { padding: 14px; }
+  .wm-bar { padding: 8px 10px; }
+}

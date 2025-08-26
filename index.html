@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohamedou DADE | Portfolio</title>
+  <meta name="description" content="Portfolio de Mohamedou DADE, ingénieur logiciel. Linux-inspired terminal UI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wm-bar" role="banner">
+    <div class="wm-title">Portfolio — Mohamedou DADE</div>
+    <nav class="wm-actions">
+      <button title="Theme" id="themeToggle" aria-label="Theme">◐</button>
+      <button title="Lang" id="langToggle" aria-label="Language">🌐</button>
+      <a id="ghLink" href="https://github.com/med23009" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub: med23009"><img class="icon-img" src="logos/github.png" alt="GitHub" /> <span class="hide-sm">GitHub</span></a>
+    </nav>
+  </header>
+
+  <main class="terminal" role="main" aria-live="polite">
+    <div class="screen" id="screen" tabindex="0" aria-label="Terminal output"></div>
+    <div class="prompt-row">
+      <span class="prompt" id="promptLabel">med@linux:~$</span>
+      <input id="cmd" class="cmd" type="text" autocomplete="off" aria-label="Command input" />
+      <span class="caret" aria-hidden="true"></span>
+    </div>
+  </main>
+
+  <noscript>
+    JavaScript est nécessaire pour l'interface en mode terminal.
+  </noscript>
+
+  <script src="main.js"></script>
+</body>
+</html>
